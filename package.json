@@ -1,0 +1,22 @@
+{
+  "name": "bangumiParser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "vite-node -w main.ts",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^4.0.4",
+    "vite-node": "^0.28.3",
+    "vitest": "^0.28.3"
+  },
+  "dependencies": {
+    "nzh": "^1.0.8",
+    "tmdb": "^2.6.0"
+  }
+}

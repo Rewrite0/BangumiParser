@@ -1,14 +1,30 @@
 {
-  "name": "bangumiParser",
+  "name": "bangumi-title-parser",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.ts",
+  "description": "用于解析中文字幕组发布的番剧标题中的字幕组名, 番剧名, 季度, 集数, 视频分辨率, 字幕类型",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite-node -w main.ts",
     "test": "vitest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "bangumi",
+    "anime",
+    "parser",
+    "typescript"
+  ],
+  "author": "Rewrite0",
   "license": "ISC",
   "devDependencies": {
     "vite": "^4.0.4",

@@ -16,7 +16,7 @@ export interface BangumiInfo {
   subtitle: string | null;
 }
 
-class TitleParser {
+export class TitleParser {
   private preTitle: string;
   private titleArray: Array<string>;
   private bangumiInfo: BangumiInfo;
@@ -166,5 +166,3 @@ class TitleParser {
     return this;
   }
 }
-
-export default new TitleParser();

@@ -1,5 +1,5 @@
 import { it, expect } from 'vitest';
-import TitleParser from '../src/parser';
+import { TitleParser } from '../src/parser';
 
 const result = (
   name: string,
@@ -93,36 +93,36 @@ const list = [
 
 it('group parser', () => {
   list.map(({ title, group }) => {
-    expect(TitleParser.parser(title).group).toBe(group);
+    expect(new TitleParser().parser(title).group).toBe(group);
   });
 });
 
 it('season parser', () => {
   list.map(({ title, season }) => {
-    expect(TitleParser.parser(title).season).toBe(season);
+    expect(new TitleParser().parser(title).season).toBe(season);
   });
 });
 
 it('episode parser', () => {
   list.map(({ title, episode }) => {
-    expect(TitleParser.parser(title).episode).toBe(episode);
+    expect(new TitleParser().parser(title).episode).toBe(episode);
   });
 });
 
 it('dpi parser', () => {
   list.map(({ title, dpi }) => {
-    expect(TitleParser.parser(title).dpi).toBe(dpi);
+    expect(new TitleParser().parser(title).dpi).toBe(dpi);
   });
 });
 
 it('subtitle parser', () => {
   list.map(({ title, subtitle }) => {
-    expect(TitleParser.parser(title).subtitle).toBe(subtitle);
+    expect(new TitleParser().parser(title).subtitle).toBe(subtitle);
   });
 });
 
 it('name parser', () => {
   list.map(({ title, name }) => {
-    expect(TitleParser.parser(title).name).toBe(name);
+    expect(new TitleParser().parser(title).name).toBe(name);
   });
 });

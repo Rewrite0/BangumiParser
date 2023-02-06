@@ -21,6 +21,10 @@ const result = (
 
 const list = [
   {
+    title: '【悠哈璃羽字幕社】[虚构推理_Kyokou Suiri S02][03][x264 1080p][CHT] [201.7MB]',
+    ...result('虚构推理', '悠哈璃羽字幕社', 2, 3, '1080p', 'CHT'),
+  },
+  {
     title:
       '[漫貓字幕社][1月新番][虛構推理 第二季][Kyokou Suiri Season 2][04][1080P][MP4][繁日雙語]',
     ...result('虛構推理', '漫貓字幕社', 2, 4, '1080P', '繁日雙語'),
@@ -28,7 +32,7 @@ const list = [
   {
     title:
       '[桜都字幕组] 我想成为影之强者！ / Kage no Jitsuryokusha ni Naritakute! [17][1080p][繁体内嵌]',
-    ...result('我想成为影之强者！', '桜都字幕组', 1, 17, '1080p', '繁体内嵌'),
+    ...result('我想成为影之强者', '桜都字幕组', 1, 17, '1080p', '繁体内嵌'),
   },
   {
     title:
@@ -43,7 +47,7 @@ const list = [
   {
     title:
       '[NaN-Raws]我想成为影之强者！[2][Bahamut][WEB-DL][1080P][AVC_AAC][CHT][MP4][bangumi.online]',
-    ...result('我想成为影之强者！', 'NaN-Raws', 1, 2, '1080P', 'CHT'),
+    ...result('我想成为影之强者', 'NaN-Raws', 1, 2, '1080P', 'CHT'),
   },
   {
     title:
@@ -68,7 +72,7 @@ const list = [
   {
     title:
       '[桜都字幕组] 入间同学入魔了！第3季 / Mairimashita! Iruma-kun 3rd Season [15][1080p][简繁内封] [418.6 MB]',
-    ...result('入间同学入魔了！', '桜都字幕组', 3, 15, '1080p', '简繁内封'),
+    ...result('入间同学入魔了', '桜都字幕组', 3, 15, '1080p', '简繁内封'),
   },
   {
     title:
@@ -83,14 +87,7 @@ const list = [
   {
     title:
       '[Amor字幕组&云歌字幕组][魔王学院的不适任者～史上最强的魔王始祖，转生就读子孙们的学校～ 第2季][04][CHS_JP][1080P][HDrip][MP4][急招翻译校对时轴特效] [982.9MB]',
-    ...result(
-      '魔王学院的不适任者～史上最强的魔王始祖，转生就读子孙们的学校～',
-      'Amor字幕组&云歌字幕组',
-      2,
-      4,
-      '1080P',
-      'CHS'
-    ),
+    ...result('魔王学院的不适任者', 'Amor字幕组&云歌字幕组', 2, 4, '1080P', 'CHS'),
   },
 ];
 
@@ -121,5 +118,11 @@ it('dpi parser', () => {
 it('subtitle parser', () => {
   list.map(({ title, subtitle }) => {
     expect(TitleParser.parser(title).subtitle).toBe(subtitle);
+  });
+});
+
+it('name parser', () => {
+  list.map(({ title, name }) => {
+    expect(TitleParser.parser(title).name).toBe(name);
   });
 });

@@ -3,17 +3,17 @@ import nzh from 'nzh';
 /** 该集信息 */
 export interface BangumiInfo {
   /** 字幕组 */
-  group?: string;
+  group: string | null;
   /** 番名 */
-  name?: string;
+  name: string | null;
   /** 季度 */
-  season?: number;
+  season: number;
   /** 集数 */
-  episode?: number | null;
+  episode: number | null;
   /** 分辨率 */
-  dpi?: string | null;
+  dpi: string | null;
   /** 字幕 */
-  subtitle?: string | null;
+  subtitle: string | null;
 }
 
 class TitleParser {
@@ -24,15 +24,18 @@ class TitleParser {
   constructor() {
     this.preTitle = '';
     this.titleArray = [];
-    this.bangumiInfo = {};
+    this.bangumiInfo = {
+      group: null,
+      name: null,
+      season: 1,
+      episode: null,
+      dpi: null,
+      subtitle: null,
+    };
   }
 
   /** 解析标题 */
   parser(title: string) {
-    console.log('===================');
-
-    console.log('raw title', title);
-
     this.preProcess(title)
       .getGroupName()
       .getSeason()
@@ -40,11 +43,6 @@ class TitleParser {
       .getDPI()
       .getSubTitle()
       .getName();
-
-    console.log('preTitle', this.preTitle);
-    console.log('info', this.bangumiInfo);
-
-    console.log('===================');
 
     return this.bangumiInfo;
   }
@@ -57,7 +55,7 @@ class TitleParser {
       .replace(/\//g, '-')
       .replace(/\d{1,2}月新番/, '')
       .replace(/(\d{0,}\.)?\dGB/, '')
-      .replace('[]', '');
+      .replace(/(\[\])/g, '');
 
     return this;
   }
@@ -162,21 +160,8 @@ class TitleParser {
   }
 
   private getName() {
-    // this.preTitle = this.preTitle.replace(/\[/g, ' ').replace(/\]/g, ' ');
-
-    // const res = this.preTitle
-    //   .split(/\s{2}|-\s/)
-    //   .filter((e) => e !== '' && e !== ' ')
-    //   .map((e) => e.trim());
-    // const res = this.preTitle
-    //   .split(/[\[\]]/)
-    //   .filter((e) => e !== '' && e !== ' ')
-    //   .map((e) => e.split(/\s{2}|-\s/));
-    // console.log('res', res);
-
-    console.log('zh', this.preTitle.match(/[\u4e00-\u9fa5]{2,}/));
-    // console.log('en', this.preTitle.match(/[a-zA-Z]{3,}/));
-    // console.log('jp', this.preTitle.match(/[\u0800-\u4e00]{2,}/));
+    const matchName = this.preTitle.match(/[\u4e00-\u9fa5]{2,}/);
+    this.bangumiInfo.name = matchName?.[0]?.trim() ?? null;
 
     return this;
   }

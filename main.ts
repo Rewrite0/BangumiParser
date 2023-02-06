@@ -24,17 +24,10 @@ const list = [
   '【悠哈璃羽字幕社】[虚构推理_Kyokou Suiri S02][03][x264 1080p][CHT] [201.7MB]',
   '[桜都字幕组] 入间同学入魔了！第3季 / Mairimashita! Iruma-kun 3rd Season [15][1080p][简繁内封] [418.6 MB]',
   '[NC-Raws] 我的英雄学院 第六季 / Boku no Hero Academia S6 - 17 (B-Global 1920x1080 HEVC AAC MKV)',
+  '[Amor字幕组&云歌字幕组][魔王学院的不适任者～史上最强的魔王始祖，转生就读子孙们的学校～ 第2季][04][CHS_JP][1080P][HDrip][MP4][急招翻译校对时轴特效] [982.9MB]',
 ];
 
-console.log(`
-  =============================
-  =============================
-  =============================
-  =============================
-  =============================
-  =============================
-  `);
-
 list.map((item) => {
-  TitleParser.parser(item);
+  const info = TitleParser.parser(item);
+  console.log('info', info);
 });

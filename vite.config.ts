@@ -11,7 +11,6 @@ export default defineConfig({
       entry: 'main.ts',
       name: 'bangumi-title-parser',
       fileName: 'index',
-      formats: ['es'],
     },
   },
 });

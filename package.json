@@ -15,6 +15,7 @@
     }
   },
   "scripts": {
+    "build": "vite build",
     "dev": "vite-node -w main.ts",
     "test": "vitest"
   },

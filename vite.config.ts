@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
+  plugins: [dts()],
   esbuild: {
     drop: ['console', 'debugger'],
   },
@@ -9,6 +11,7 @@ export default defineConfig({
       entry: 'main.ts',
       name: 'bangumi-title-parser',
       fileName: 'index',
+      formats: ['es'],
     },
   },
 });

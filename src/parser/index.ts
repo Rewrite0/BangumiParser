@@ -55,7 +55,9 @@ export class TitleParser {
       .replace(/\//g, '-')
       .replace(/\d{1,2}月新番/, '')
       .replace(/(\d{0,}\.)?\dGB/, '')
-      .replace(/(\[\])/g, '');
+      .replace(/(\[\])/g, '')
+      .replace(/★/g, '')
+      .replace('招募翻译', '');
 
     return this;
   }
@@ -86,7 +88,7 @@ export class TitleParser {
       const preSeason = res[0]
         .replace(/[第季期]/g, '')
         .replace(/[sS]/g, '')
-        .replace(/[eaon ]/g, '');
+        .replace(/[eaon]\s/g, '');
 
       if (isNaN(Number(preSeason))) {
         // 汉字数字
@@ -107,7 +109,7 @@ export class TitleParser {
 
   /** 集数 */
   private getEpisode() {
-    const res = this.preTitle.split(/[\[\]-]/).filter((e) => e !== '' && e !== ' ');
+    const res = this.preTitle.split(/[\[\]\-第集]/).filter((e) => e !== '' && e !== ' ');
 
     const filterNumber = (arr: string[]) => {
       const res = arr.filter((e) => !isNaN(Number(e)));
@@ -127,6 +129,7 @@ export class TitleParser {
     }
 
     this.preTitle = this.preTitle
+      .replace(/[第]\d{1,}集/, ' ')
       .replace(new RegExp(`[0]{0,1}${this.bangumiInfo.episode}`), '')
       .replace('[]', '')
       .trim();
@@ -147,11 +150,21 @@ export class TitleParser {
   }
 
   private getSubTitle() {
-    const reg = /CHT|CHS|GB|BIG5|[简繁日中]{1,}[体]?(.*字幕|外挂|内嵌|内封|双语|雙語)?/;
-    const subtitle = this.preTitle.match(reg)?.[0] ?? null;
+    const reg =
+      /CHT|CHS|GB|BIG5|[简繁日中粤]{1,}[体]?(.*字幕|外挂|内嵌|内封|双语|雙語|语)?/;
+    const list = this.preTitle
+      .split(/[\[\]]/)
+      .map((e) => e.match(reg)?.[0])
+      .filter((e) => e);
+
+    const maxLength = Math.max(...list.map((e) => e.length));
+    const subtitle = list.filter((e) => e.length === maxLength)?.[0] ?? null;
 
     if (subtitle !== null) {
-      this.preTitle = this.preTitle.replace(`${subtitle}`, '').replace('[]', '');
+      this.preTitle = this.preTitle
+        .replace(`${subtitle}`, '')
+        .replace(reg, '')
+        .replace('[]', '');
     }
 
     this.bangumiInfo.subtitle = subtitle;
@@ -161,7 +174,13 @@ export class TitleParser {
 
   private getName() {
     const matchName = this.preTitle.match(/[\u4e00-\u9fa5，,]{2,}/);
+
     this.bangumiInfo.name = matchName?.[0]?.trim() ?? null;
+
+    if (matchName === null) {
+      const en = this.preTitle.match(/[a-zA-Z0-9{0,}\s-\s{0,}]{2,}/);
+      this.bangumiInfo.name = en?.[0]?.trim() ?? null;
+    }
 
     return this;
   }

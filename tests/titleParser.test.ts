@@ -21,6 +21,26 @@ const result = (
 
 const list = [
   {
+    title: '[国漫]万界独尊第104集无水印高清下载',
+    ...result('万界独尊', '国漫', 1, 104, null, null),
+  },
+  {
+    title:
+      '[jibaketa合成&音频压制][TVB粤语]机界战队全开者 / Kikai Sentai Zenkaiger - 35 [粤日双语+内封繁体中文字幕][BD 1920x1080 x264 AACx2 SRT TVB CHT]',
+    ...result(
+      '机界战队全开者',
+      'jibaketa合成&音频压制',
+      1,
+      35,
+      '1920x1080',
+      '粤日双语+内封繁体中文字幕'
+    ),
+  },
+  {
+    title: '【喵萌Production】★01月新番★[D4DJ - All Mix][03][720p][简日双语][招募翻译]',
+    ...result('D4DJ - All Mix', '喵萌Production', 1, 3, '720p', '简日双语'),
+  },
+  {
     title:
       '【喵萌奶茶屋】★01月新番★[万事屋斋藤，到异世界 / Benriya Saitou-san, Isekai ni Iku][06][1080p][繁日双语][招募翻译]',
     ...result('万事屋斋藤，到异世界', '喵萌奶茶屋', 1, 6, '1080p', '繁日双语'),

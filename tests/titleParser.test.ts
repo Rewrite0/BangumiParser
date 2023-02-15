@@ -21,6 +21,16 @@ const result = (
 
 const list = [
   {
+    title:
+      '【喵萌奶茶屋】★01月新番★[万事屋斋藤，到异世界 / Benriya Saitou-san, Isekai ni Iku][06][1080p][繁日双语][招募翻译]',
+    ...result('万事屋斋藤，到异世界', '喵萌奶茶屋', 1, 6, '1080p', '繁日双语'),
+  },
+  {
+    title:
+      '[ANi]  英雄王，为了穷尽武道而转生～而后成为世界最强见习骑士♀～ - 06 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]',
+    ...result('英雄王，为了穷尽武道而转生', 'ANi', 1, 6, '1080P', 'CHT'),
+  },
+  {
     title: '【悠哈璃羽字幕社】[虚构推理_Kyokou Suiri S02][03][x264 1080p][CHT] [201.7MB]',
     ...result('虚构推理', '悠哈璃羽字幕社', 2, 3, '1080p', 'CHT'),
   },

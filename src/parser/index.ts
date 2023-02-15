@@ -160,7 +160,7 @@ export class TitleParser {
   }
 
   private getName() {
-    const matchName = this.preTitle.match(/[\u4e00-\u9fa5]{2,}/);
+    const matchName = this.preTitle.match(/[\u4e00-\u9fa5，,]{2,}/);
     this.bangumiInfo.name = matchName?.[0]?.trim() ?? null;
 
     return this;

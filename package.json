@@ -1,6 +1,6 @@
 {
   "name": "bangumi-title-parser",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "用于解析中文字幕组发布的番剧文件名中的字幕组名, 番剧名, 季度, 集数, 视频分辨率, 字幕类型",
   "homepage": "https://github.com/Rewrite0/bangumiParser#readme",
   "type": "module",

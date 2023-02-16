@@ -37,6 +37,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "push": "vite build && pnpm publish",
     "build": "vite build",
     "dev": "vite-node -w main.ts",
     "test": "vitest"

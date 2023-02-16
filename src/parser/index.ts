@@ -50,8 +50,8 @@ export class TitleParser {
   /** 标题预处理, 替换特殊字符 */
   private preProcess(rawTitle: string) {
     this.preTitle = rawTitle
-      .replace(/[【(（]/g, '[')
-      .replace(/[】)）]/g, ']')
+      .replace(/[【(（<]/g, '[')
+      .replace(/[】)）>]/g, ']')
       .replace(/\//g, '-')
       .replace(/\d{1,2}月新番/, '')
       .replace(/(\d{0,}\.)?\dGB/, '')
@@ -109,7 +109,9 @@ export class TitleParser {
 
   /** 集数 */
   private getEpisode() {
-    const res = this.preTitle.split(/[\[\]\-第集]/).filter((e) => e !== '' && e !== ' ');
+    const res = this.preTitle
+      .split(/[\[\]\-第集话]/)
+      .filter((e) => e !== '' && e !== ' ');
 
     const filterNumber = (arr: string[]) => {
       const res = arr.filter((e) => !isNaN(Number(e)));
@@ -173,12 +175,15 @@ export class TitleParser {
   }
 
   private getName() {
+    this.preTitle = this.preTitle.replace(/\]\s?\-/, ']').replace(/\-\s{1,}\[/, '[');
+
     const matchName = this.preTitle.match(/[\u4e00-\u9fa5，,]{2,}/);
 
     this.bangumiInfo.name = matchName?.[0]?.trim() ?? null;
 
     if (matchName === null) {
-      const en = this.preTitle.match(/[a-zA-Z0-9{0,}\s-\s{0,}]{2,}/);
+      const en = this.preTitle.match(/[a-zA-Z0-9{0,}(\s-\s)?]{2,}/);
+
       this.bangumiInfo.name = en?.[0]?.trim() ?? null;
     }
 

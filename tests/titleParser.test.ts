@@ -5,7 +5,7 @@ const result = (
   name: string,
   group: string,
   season: number,
-  episode: number,
+  episode: number | null,
   dpi: string | null,
   subtitle: string | null
 ) => {
@@ -20,6 +20,26 @@ const result = (
 };
 
 const list = [
+  {
+    title:
+      '[喵萌Production&LoliHouse] D4DJ All Mix - <03> [WebRip 1080p HEVC-10bit AAC][简繁日内封字幕]',
+    ...result(
+      'D4DJ All Mix',
+      '喵萌Production&LoliHouse',
+      1,
+      3,
+      '1080p',
+      '简繁日内封字幕'
+    ),
+  },
+  {
+    title: '[OPFans枫雪动漫][ONE PIECE 海贼王][第1030话][简体][典藏版]',
+    ...result('海贼王', 'OPFans枫雪动漫', 1, 1030, null, '简体'),
+  },
+  {
+    title: '[国漫]兵主奇魂：第17话 灵气成丸，小妖齐聚无水印高清下载',
+    ...result('兵主奇魂', '国漫', 1, 17, null, null),
+  },
   {
     title: '[国漫]万界独尊第104集无水印高清下载',
     ...result('万界独尊', '国漫', 1, 104, null, null),
